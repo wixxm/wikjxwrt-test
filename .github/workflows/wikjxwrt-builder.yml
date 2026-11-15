@@ -67,16 +67,16 @@ jobs:
         unset GITHUB_WORKFLOW
         unset GITHUB_REPOSITORY
         unset RUNNER_OS
-- name: Cache build cache
+    - name: Cache build cache
       uses: actions/cache@v4
       with:
         path: |
           openwrt/.ccache
           openwrt/tmp/go-build
           openwrt/dl
-      key: ccache-25.12-${{ hashFiles('openwrt/.config') }}
-      restore-keys: |
-        ccache-25.12-
+        key: ccache-25.12-${{ hashFiles('openwrt/.config') }}
+        restore-keys: |
+          ccache-25.12-
 
     - name: Compile the firmware
       id: compile
