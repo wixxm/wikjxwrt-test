@@ -93,12 +93,12 @@ jobs:
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
     - name: Show ccache stats
-    run: |
-      if [ -x openwrt/staging_dir/host/bin/ccache ]; then
+      run: |
+        if [ -x openwrt/staging_dir/host/bin/ccache ]; then
           CCACHE_DIR="$GITHUB_WORKSPACE/openwrt/.ccache" openwrt/staging_dir/host/bin/ccache -s
-            else
-            echo "ccache binary not found"
-              fi
+        else
+          echo "ccache binary not found"
+        fi
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
